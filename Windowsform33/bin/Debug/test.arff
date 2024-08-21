@@ -1,0 +1,1761 @@
+% 1. Title: Iris Plants Database
+% 
+% 2. Sources:
+%      (a) Creator: R.A. Fisher
+%      (b) Donor: Michael Marshall (MARSHALL%PLU@io.arc.nasa.gov)
+%      (c) Date: July, 1988
+% 
+% 3. Past Usage:
+%    - Publications: too many to mention!!!  Here are a few.
+%    1. Fisher,R.A. "The use of multiple measurements in taxonomic problems"
+%       Annual Eugenics, 7, Part II, 179-188 (1936); also in "Contributions
+%       to Mathematical Statistics" (John Wiley, NY, 1950).
+%    2. Duda,R.O., & Hart,P.E. (1973) Pattern Classification and Scene Analysis.
+%       (Q327.D83) John Wiley & Sons.  ISBN 0-471-22361-1.  See page 218.
+%    3. Dasarathy, B.V. (1980) "Nosing Around the Neighborhood: A New System
+%       Structure and Classification Rule for Recognition in Partially Exposed
+%       Environments".  IEEE Transactions on Pattern Analysis and Machine
+%       Intelligence, Vol. PAMI-2, No. 1, 67-71.
+%       -- Results:
+%          -- very low misclassification rates (0% for the setosa class)
+%    4. Gates, G.W. (1972) "The Reduced Nearest Neighbor Rule".  IEEE 
+%       Transactions on Information Theory, May 1972, 431-433.
+%       -- Results:
+%          -- very low misclassification rates again
+%    5. See also: 1988 MLC Proceedings, 54-64.  Cheeseman et al's AUTOCLASS II
+%       conceptual clustering system finds 3 classes in the data.
+% 
+% 4. Relevant Information:
+%    --- This is perhaps the best known database to be found in the pattern
+%        recognition literature.  Fisher's paper is a classic in the field
+%        and is referenced frequently to this day.  (See Duda & Hart, for
+%        example.)  The data set contains 3 classes of 50 instances each,
+%        where each class refers to a type of iris plant.  One class is
+%        linearly separable from the other 2; the latter are NOT linearly
+%        separable from each other.
+%    --- Predicted attribute: class of iris plant.
+%    --- This is an exceedingly simple domain.
+% 
+% 5. Number of Instances: 150 (50 in each of three classes)
+% 
+% 6. Number of Attributes: 4 numeric, predictive attributes and the class
+% 
+% 7. Attribute Information:
+%    1. sepal length in cm
+%    2. sepal width in cm
+%    3. petal length in cm
+%    4. petal width in cm
+%    5. class: 
+%       -- Iris Setosa
+%       -- Iris Versicolour
+%       -- Iris Virginica
+% 
+% 8. Missing Attribute Values: None
+% 
+% Summary Statistics:
+%  	           Min  Max   Mean    SD   Class Correlation
+%    sepal length: 4.3  7.9   5.84  0.83    0.7826   
+%     sepal width: 2.0  4.4   3.05  0.43   -0.4194
+%    petal length: 1.0  6.9   3.76  1.76    0.9490  (high!)
+%     petal width: 0.1  2.5   1.20  0.76    0.9565  (high!)
+% 
+% 9. Class Distribution: 33.3% for each of 3 classes.
+
+@RELATION iris
+
+@ATTRIBUTE sepallength	REAL
+@ATTRIBUTE sepalwidth 	REAL
+@ATTRIBUTE petallength 	REAL
+@ATTRIBUTE petalwidth	REAL
+@ATTRIBUTE class 	{Iris-setosa,Iris-versicolor,Iris-virginica}
+
+@DATA
+2,22,222,222
+% 1. Title: Iris Plants Database
+% 
+% 2. Sources:
+%      (a) Creator: R.A. Fisher
+%      (b) Donor: Michael Marshall (MARSHALL%PLU@io.arc.nasa.gov)
+%      (c) Date: July, 1988
+% 
+% 3. Past Usage:
+%    - Publications: too many to mention!!!  Here are a few.
+%    1. Fisher,R.A. "The use of multiple measurements in taxonomic problems"
+%       Annual Eugenics, 7, Part II, 179-188 (1936); also in "Contributions
+%       to Mathematical Statistics" (John Wiley, NY, 1950).
+%    2. Duda,R.O., & Hart,P.E. (1973) Pattern Classification and Scene Analysis.
+%       (Q327.D83) John Wiley & Sons.  ISBN 0-471-22361-1.  See page 218.
+%    3. Dasarathy, B.V. (1980) "Nosing Around the Neighborhood: A New System
+%       Structure and Classification Rule for Recognition in Partially Exposed
+%       Environments".  IEEE Transactions on Pattern Analysis and Machine
+%       Intelligence, Vol. PAMI-2, No. 1, 67-71.
+%       -- Results:
+%          -- very low misclassification rates (0% for the setosa class)
+%    4. Gates, G.W. (1972) "The Reduced Nearest Neighbor Rule".  IEEE 
+%       Transactions on Information Theory, May 1972, 431-433.
+%       -- Results:
+%          -- very low misclassification rates again
+%    5. See also: 1988 MLC Proceedings, 54-64.  Cheeseman et al's AUTOCLASS II
+%       conceptual clustering system finds 3 classes in the data.
+% 
+% 4. Relevant Information:
+%    --- This is perhaps the best known database to be found in the pattern
+%        recognition literature.  Fisher's paper is a classic in the field
+%        and is referenced frequently to this day.  (See Duda & Hart, for
+%        example.)  The data set contains 3 classes of 50 instances each,
+%        where each class refers to a type of iris plant.  One class is
+%        linearly separable from the other 2; the latter are NOT linearly
+%        separable from each other.
+%    --- Predicted attribute: class of iris plant.
+%    --- This is an exceedingly simple domain.
+% 
+% 5. Number of Instances: 150 (50 in each of three classes)
+% 
+% 6. Number of Attributes: 4 numeric, predictive attributes and the class
+% 
+% 7. Attribute Information:
+%    1. sepal length in cm
+%    2. sepal width in cm
+%    3. petal length in cm
+%    4. petal width in cm
+%    5. class: 
+%       -- Iris Setosa
+%       -- Iris Versicolour
+%       -- Iris Virginica
+% 
+% 8. Missing Attribute Values: None
+% 
+% Summary Statistics:
+%  	           Min  Max   Mean    SD   Class Correlation
+%    sepal length: 4.3  7.9   5.84  0.83    0.7826   
+%     sepal width: 2.0  4.4   3.05  0.43   -0.4194
+%    petal length: 1.0  6.9   3.76  1.76    0.9490  (high!)
+%     petal width: 0.1  2.5   1.20  0.76    0.9565  (high!)
+% 
+% 9. Class Distribution: 33.3% for each of 3 classes.
+
+@RELATION iris
+
+@ATTRIBUTE sepallength	REAL
+@ATTRIBUTE sepalwidth 	REAL
+@ATTRIBUTE petallength 	REAL
+@ATTRIBUTE petalwidth	REAL
+@ATTRIBUTE class 	{Iris-setosa,Iris-versicolor,Iris-virginica}
+
+@DATA
+2,3,4,5
+% Changes to WEKA Format: SRG - November 1994
+%	1. Boolean attributes changed from 1 and 0 to Enumerated attribute with
+%          values {true and false}
+%       2. Class Number (Attribute 18) changed to an Enumerated type with
+%	   values {1,2,3,4,5,6,7} 
+%
+% December 1997 - Changed class attribute values to semi-sensible names
+%
+% 1. Title: Zoo database
+% 
+% 2. Source Information
+%    -- Creator: Richard Forsyth
+%    -- Donor: Richard S. Forsyth 
+%              8 Grosvenor Avenue
+%              Mapperley Park
+%              Nottingham NG3 5DX
+%              0602-621676
+%    -- Date: 5/15/1990
+%  
+% 3. Past Usage:
+%    -- None known other than what is shown in Forsyth's PC/BEAGLE User's Guide.
+% 
+% 4. Relevant Information:
+%    -- A simple database containing 17 Boolean-valued attributes.  The "type"
+%       attribute appears to be the class attribute.  Here is a breakdown of
+%       which animals are in which type: (I find it unusual that there are
+%       2 instances of "frog" and one of "girl"!)
+% 
+%       Class# Set of animals:
+%       ====== ===============================================================
+%            1 (41) aardvark, antelope, bear, boar, buffalo, calf,
+%                   cavy, cheetah, deer, dolphin, elephant,
+%                   fruitbat, giraffe, girl, goat, gorilla, hamster,
+%                   hare, leopard, lion, lynx, mink, mole, mongoose,
+%                   opossum, oryx, platypus, polecat, pony,
+%                   porpoise, puma, pussycat, raccoon, reindeer,
+%                   seal, sealion, squirrel, vampire, vole, wallaby,wolf
+%            2 (20) chicken, crow, dove, duck, flamingo, gull, hawk,
+%                   kiwi, lark, ostrich, parakeet, penguin, pheasant,
+%                   rhea, skimmer, skua, sparrow, swan, vulture, wren
+%            3 (5)  pitviper, seasnake, slowworm, tortoise, tuatara 
+%            4 (13) bass, carp, catfish, chub, dogfish, haddock,
+%                   herring, pike, piranha, seahorse, sole, stingray, tuna
+%            5 (4)  frog, frog, newt, toad 
+%            6 (8)  flea, gnat, honeybee, housefly, ladybird, moth, termite, wasp
+%            7 (10) clam, crab, crayfish, lobster, octopus,
+%                   scorpion, seawasp, slug, starfish, worm
+% 
+% 5. Number of Instances: 101
+% 6. Number of Attributes: 18 (animal name, 15 Boolean attributes, 2 numerics)
+% 7. Attribute Information: (name of attribute and type of value domain)
+%    1. animal name:	Unique for each instance
+%    2. hair		Boolean
+%    3. feathers	Boolean
+%    4. eggs		Boolean
+%    5. milk		Boolean
+%    6. airborne	Boolean
+%    7. aquatic		Boolean
+%    8. predator	Boolean
+%    9. toothed		Boolean
+%   10. backbone	Boolean
+%   11. breathes	Boolean
+%   12. venomous	Boolean
+%   13. fins		Boolean
+%   14. legs		Numeric (set of values: {0,2,4,5,6,8})
+%   15. tail		Boolean
+%   16. domestic	Boolean
+%   17. catsize		Boolean
+%   18. type		Numeric (integer values in range [1,7])
+% 
+% 8. Missing Attribute Values: None
+% 9. Class Distribution: Given above
+   
+@RELATION zoo
+
+@ATTRIBUTE animal {aardvark,antelope,bass,bear,boar,buffalo,calf,carp,catfish,cavy,cheetah,chicken,chub,clam,crab,crayfish,crow,deer,dogfish,dolphin,dove,duck,elephant,flamingo,flea,frog,fruitbat,giraffe,girl,gnat,goat,gorilla,gull,haddock,hamster,hare,hawk,herring,honeybee,housefly,kiwi,ladybird,lark,leopard,lion,lobster,lynx,mink,mole,mongoose,moth,newt,octopus,opossum,oryx,ostrich,parakeet,penguin,pheasant,pike,piranha,pitviper,platypus,polecat,pony,porpoise,puma,pussycat,raccoon,reindeer,rhea,scorpion,seahorse,seal,sealion,seasnake,seawasp,skimmer,skua,slowworm,slug,sole,sparrow,squirrel,starfish,stingray,swan,termite,toad,tortoise,tuatara,tuna,vampire,vole,vulture,wallaby,wasp,wolf,worm,wren}
+@ATTRIBUTE hair {false, true}
+@ATTRIBUTE feathers {false, true}
+@ATTRIBUTE eggs {false, true}
+@ATTRIBUTE milk {false, true}
+@ATTRIBUTE airborne {false, true}
+@ATTRIBUTE aquatic {false, true}
+@ATTRIBUTE predator {false, true}
+@ATTRIBUTE toothed {false, true}
+@ATTRIBUTE backbone {false, true}
+@ATTRIBUTE breathes {false, true}
+@ATTRIBUTE venomous {false, true}
+@ATTRIBUTE fins {false, true}
+@ATTRIBUTE legs INTEGER [0,9]
+@ATTRIBUTE tail {false, true}
+@ATTRIBUTE domestic {false, true}
+@ATTRIBUTE catsize {false, true}
+@ATTRIBUTE type { mammal, bird, reptile, fish, amphibian, insect, invertebrate }
+
+@DATA
+calf,true,false,false,false,false,true,true,true,true,false,false,false,2,false,false,true
+% 1. Title: Iris Plants Database
+% 
+% 2. Sources:
+%      (a) Creator: R.A. Fisher
+%      (b) Donor: Michael Marshall (MARSHALL%PLU@io.arc.nasa.gov)
+%      (c) Date: July, 1988
+% 
+% 3. Past Usage:
+%    - Publications: too many to mention!!!  Here are a few.
+%    1. Fisher,R.A. "The use of multiple measurements in taxonomic problems"
+%       Annual Eugenics, 7, Part II, 179-188 (1936); also in "Contributions
+%       to Mathematical Statistics" (John Wiley, NY, 1950).
+%    2. Duda,R.O., & Hart,P.E. (1973) Pattern Classification and Scene Analysis.
+%       (Q327.D83) John Wiley & Sons.  ISBN 0-471-22361-1.  See page 218.
+%    3. Dasarathy, B.V. (1980) "Nosing Around the Neighborhood: A New System
+%       Structure and Classification Rule for Recognition in Partially Exposed
+%       Environments".  IEEE Transactions on Pattern Analysis and Machine
+%       Intelligence, Vol. PAMI-2, No. 1, 67-71.
+%       -- Results:
+%          -- very low misclassification rates (0% for the setosa class)
+%    4. Gates, G.W. (1972) "The Reduced Nearest Neighbor Rule".  IEEE 
+%       Transactions on Information Theory, May 1972, 431-433.
+%       -- Results:
+%          -- very low misclassification rates again
+%    5. See also: 1988 MLC Proceedings, 54-64.  Cheeseman et al's AUTOCLASS II
+%       conceptual clustering system finds 3 classes in the data.
+% 
+% 4. Relevant Information:
+%    --- This is perhaps the best known database to be found in the pattern
+%        recognition literature.  Fisher's paper is a classic in the field
+%        and is referenced frequently to this day.  (See Duda & Hart, for
+%        example.)  The data set contains 3 classes of 50 instances each,
+%        where each class refers to a type of iris plant.  One class is
+%        linearly separable from the other 2; the latter are NOT linearly
+%        separable from each other.
+%    --- Predicted attribute: class of iris plant.
+%    --- This is an exceedingly simple domain.
+% 
+% 5. Number of Instances: 150 (50 in each of three classes)
+% 
+% 6. Number of Attributes: 4 numeric, predictive attributes and the class
+% 
+% 7. Attribute Information:
+%    1. sepal length in cm
+%    2. sepal width in cm
+%    3. petal length in cm
+%    4. petal width in cm
+%    5. class: 
+%       -- Iris Setosa
+%       -- Iris Versicolour
+%       -- Iris Virginica
+% 
+% 8. Missing Attribute Values: None
+% 
+% Summary Statistics:
+%  	           Min  Max   Mean    SD   Class Correlation
+%    sepal length: 4.3  7.9   5.84  0.83    0.7826   
+%     sepal width: 2.0  4.4   3.05  0.43   -0.4194
+%    petal length: 1.0  6.9   3.76  1.76    0.9490  (high!)
+%     petal width: 0.1  2.5   1.20  0.76    0.9565  (high!)
+% 
+% 9. Class Distribution: 33.3% for each of 3 classes.
+
+@RELATION iris
+
+@ATTRIBUTE sepallength	REAL
+@ATTRIBUTE sepalwidth 	REAL
+@ATTRIBUTE petallength 	REAL
+@ATTRIBUTE petalwidth	REAL
+@ATTRIBUTE class 	{Iris-setosa,Iris-versicolor,Iris-virginica}
+
+@DATA
+5,5,5,5
+% 1. Title: Iris Plants Database
+% 
+% 2. Sources:
+%      (a) Creator: R.A. Fisher
+%      (b) Donor: Michael Marshall (MARSHALL%PLU@io.arc.nasa.gov)
+%      (c) Date: July, 1988
+% 
+% 3. Past Usage:
+%    - Publications: too many to mention!!!  Here are a few.
+%    1. Fisher,R.A. "The use of multiple measurements in taxonomic problems"
+%       Annual Eugenics, 7, Part II, 179-188 (1936); also in "Contributions
+%       to Mathematical Statistics" (John Wiley, NY, 1950).
+%    2. Duda,R.O., & Hart,P.E. (1973) Pattern Classification and Scene Analysis.
+%       (Q327.D83) John Wiley & Sons.  ISBN 0-471-22361-1.  See page 218.
+%    3. Dasarathy, B.V. (1980) "Nosing Around the Neighborhood: A New System
+%       Structure and Classification Rule for Recognition in Partially Exposed
+%       Environments".  IEEE Transactions on Pattern Analysis and Machine
+%       Intelligence, Vol. PAMI-2, No. 1, 67-71.
+%       -- Results:
+%          -- very low misclassification rates (0% for the setosa class)
+%    4. Gates, G.W. (1972) "The Reduced Nearest Neighbor Rule".  IEEE 
+%       Transactions on Information Theory, May 1972, 431-433.
+%       -- Results:
+%          -- very low misclassification rates again
+%    5. See also: 1988 MLC Proceedings, 54-64.  Cheeseman et al's AUTOCLASS II
+%       conceptual clustering system finds 3 classes in the data.
+% 
+% 4. Relevant Information:
+%    --- This is perhaps the best known database to be found in the pattern
+%        recognition literature.  Fisher's paper is a classic in the field
+%        and is referenced frequently to this day.  (See Duda & Hart, for
+%        example.)  The data set contains 3 classes of 50 instances each,
+%        where each class refers to a type of iris plant.  One class is
+%        linearly separable from the other 2; the latter are NOT linearly
+%        separable from each other.
+%    --- Predicted attribute: class of iris plant.
+%    --- This is an exceedingly simple domain.
+% 
+% 5. Number of Instances: 150 (50 in each of three classes)
+% 
+% 6. Number of Attributes: 4 numeric, predictive attributes and the class
+% 
+% 7. Attribute Information:
+%    1. sepal length in cm
+%    2. sepal width in cm
+%    3. petal length in cm
+%    4. petal width in cm
+%    5. class: 
+%       -- Iris Setosa
+%       -- Iris Versicolour
+%       -- Iris Virginica
+% 
+% 8. Missing Attribute Values: None
+% 
+% Summary Statistics:
+%  	           Min  Max   Mean    SD   Class Correlation
+%    sepal length: 4.3  7.9   5.84  0.83    0.7826   
+%     sepal width: 2.0  4.4   3.05  0.43   -0.4194
+%    petal length: 1.0  6.9   3.76  1.76    0.9490  (high!)
+%     petal width: 0.1  2.5   1.20  0.76    0.9565  (high!)
+% 
+% 9. Class Distribution: 33.3% for each of 3 classes.
+
+@RELATION iris
+
+@ATTRIBUTE sepallength	REAL
+@ATTRIBUTE sepalwidth 	REAL
+@ATTRIBUTE petallength 	REAL
+@ATTRIBUTE petalwidth	REAL
+@ATTRIBUTE class 	{Iris-setosa,Iris-versicolor,Iris-virginica}
+
+@DATA
+0,0,0,0
+% 1. Title: Iris Plants Database
+% 
+% 2. Sources:
+%      (a) Creator: R.A. Fisher
+%      (b) Donor: Michael Marshall (MARSHALL%PLU@io.arc.nasa.gov)
+%      (c) Date: July, 1988
+% 
+% 3. Past Usage:
+%    - Publications: too many to mention!!!  Here are a few.
+%    1. Fisher,R.A. "The use of multiple measurements in taxonomic problems"
+%       Annual Eugenics, 7, Part II, 179-188 (1936); also in "Contributions
+%       to Mathematical Statistics" (John Wiley, NY, 1950).
+%    2. Duda,R.O., & Hart,P.E. (1973) Pattern Classification and Scene Analysis.
+%       (Q327.D83) John Wiley & Sons.  ISBN 0-471-22361-1.  See page 218.
+%    3. Dasarathy, B.V. (1980) "Nosing Around the Neighborhood: A New System
+%       Structure and Classification Rule for Recognition in Partially Exposed
+%       Environments".  IEEE Transactions on Pattern Analysis and Machine
+%       Intelligence, Vol. PAMI-2, No. 1, 67-71.
+%       -- Results:
+%          -- very low misclassification rates (0% for the setosa class)
+%    4. Gates, G.W. (1972) "The Reduced Nearest Neighbor Rule".  IEEE 
+%       Transactions on Information Theory, May 1972, 431-433.
+%       -- Results:
+%          -- very low misclassification rates again
+%    5. See also: 1988 MLC Proceedings, 54-64.  Cheeseman et al's AUTOCLASS II
+%       conceptual clustering system finds 3 classes in the data.
+% 
+% 4. Relevant Information:
+%    --- This is perhaps the best known database to be found in the pattern
+%        recognition literature.  Fisher's paper is a classic in the field
+%        and is referenced frequently to this day.  (See Duda & Hart, for
+%        example.)  The data set contains 3 classes of 50 instances each,
+%        where each class refers to a type of iris plant.  One class is
+%        linearly separable from the other 2; the latter are NOT linearly
+%        separable from each other.
+%    --- Predicted attribute: class of iris plant.
+%    --- This is an exceedingly simple domain.
+% 
+% 5. Number of Instances: 150 (50 in each of three classes)
+% 
+% 6. Number of Attributes: 4 numeric, predictive attributes and the class
+% 
+% 7. Attribute Information:
+%    1. sepal length in cm
+%    2. sepal width in cm
+%    3. petal length in cm
+%    4. petal width in cm
+%    5. class: 
+%       -- Iris Setosa
+%       -- Iris Versicolour
+%       -- Iris Virginica
+% 
+% 8. Missing Attribute Values: None
+% 
+% Summary Statistics:
+%  	           Min  Max   Mean    SD   Class Correlation
+%    sepal length: 4.3  7.9   5.84  0.83    0.7826   
+%     sepal width: 2.0  4.4   3.05  0.43   -0.4194
+%    petal length: 1.0  6.9   3.76  1.76    0.9490  (high!)
+%     petal width: 0.1  2.5   1.20  0.76    0.9565  (high!)
+% 
+% 9. Class Distribution: 33.3% for each of 3 classes.
+
+@RELATION iris
+
+@ATTRIBUTE sepallength	REAL
+@ATTRIBUTE sepalwidth 	REAL
+@ATTRIBUTE petallength 	REAL
+@ATTRIBUTE petalwidth	REAL
+@ATTRIBUTE class 	{Iris-setosa,Iris-versicolor,Iris-virginica}
+
+@DATA
+0,0,0,0
+% 1. Title: Database for fitting contact lenses
+% 
+% 2. Sources:
+%      (a) Cendrowska, J. "PRISM: An algorithm for inducing modular rules",
+%          International Journal of Man-Machine Studies, 1987, 27, 349-370
+%      (b) Donor: Benoit Julien (Julien@ce.cmu.edu)
+%      (c) Date: 1 August 1990
+% 
+% 3. Past Usage:
+%       1. See above.
+%       2. Witten, I. H. & MacDonald, B. A. (1988). Using concept
+%          learning for knowledge acquisition. International Journal of
+%          Man-Machine Studies, 27, (pp. 349-370).
+% 
+%  Notes:  This database is complete (all possible combinations of
+%          attribute-value pairs are represented).
+% 
+%          Each instance is complete and correct.
+% 
+%          9 rules cover the training set.
+% 
+% 4. Relevant Information Paragraph:
+%     The examples are complete and noise free.
+%     The examples highly simplified the problem. The attributes do not
+%     fully describe all the factors affecting the decision as to which type,
+%     if any, to fit.
+% 
+% 5. Number of Instances: 24
+% 
+% 6. Number of Attributes: 4 (all nominal)
+% 
+% 7. Attribute Information:
+%     -- 3 Classes
+%      1 : the patient should be fitted with hard contact lenses,
+%      2 : the patient should be fitted with soft contact lenses,
+%      1 : the patient should not be fitted with contact lenses.
+% 
+%     1. age of the patient: (1) young, (2) pre-presbyopic, (3) presbyopic
+%     2. spectacle prescription:  (1) myope, (2) hypermetrope
+%     3. astigmatic:     (1) no, (2) yes
+%     4. tear production rate:  (1) reduced, (2) normal
+% 
+% 8. Number of Missing Attribute Values:   0
+% 
+% 9. Class Distribution:
+%    1. hard contact lenses: 4
+%    2. soft contact lenses: 5
+%    3. no contact lenses: 15
+
+@relation contact-lenses
+
+@attribute age 			{young, pre-presbyopic, presbyopic}
+@attribute spectacle-prescrip	{myope, hypermetrope}
+@attribute astigmatism		{no, yes}
+@attribute tear-prod-rate	{reduced, normal}
+@attribute contact-lenses	{soft, hard, none}
+
+@data
+presbyopic,myope,no,reduced
+% Changes to WEKA Format: SRG - November 1994
+%	1. Boolean attributes changed from 1 and 0 to Enumerated attribute with
+%          values {true and false}
+%       2. Class Number (Attribute 18) changed to an Enumerated type with
+%	   values {1,2,3,4,5,6,7} 
+%
+% December 1997 - Changed class attribute values to semi-sensible names
+%
+% 1. Title: Zoo database
+% 
+% 2. Source Information
+%    -- Creator: Richard Forsyth
+%    -- Donor: Richard S. Forsyth 
+%              8 Grosvenor Avenue
+%              Mapperley Park
+%              Nottingham NG3 5DX
+%              0602-621676
+%    -- Date: 5/15/1990
+%  
+% 3. Past Usage:
+%    -- None known other than what is shown in Forsyth's PC/BEAGLE User's Guide.
+% 
+% 4. Relevant Information:
+%    -- A simple database containing 17 Boolean-valued attributes.  The "type"
+%       attribute appears to be the class attribute.  Here is a breakdown of
+%       which animals are in which type: (I find it unusual that there are
+%       2 instances of "frog" and one of "girl"!)
+% 
+%       Class# Set of animals:
+%       ====== ===============================================================
+%            1 (41) aardvark, antelope, bear, boar, buffalo, calf,
+%                   cavy, cheetah, deer, dolphin, elephant,
+%                   fruitbat, giraffe, girl, goat, gorilla, hamster,
+%                   hare, leopard, lion, lynx, mink, mole, mongoose,
+%                   opossum, oryx, platypus, polecat, pony,
+%                   porpoise, puma, pussycat, raccoon, reindeer,
+%                   seal, sealion, squirrel, vampire, vole, wallaby,wolf
+%            2 (20) chicken, crow, dove, duck, flamingo, gull, hawk,
+%                   kiwi, lark, ostrich, parakeet, penguin, pheasant,
+%                   rhea, skimmer, skua, sparrow, swan, vulture, wren
+%            3 (5)  pitviper, seasnake, slowworm, tortoise, tuatara 
+%            4 (13) bass, carp, catfish, chub, dogfish, haddock,
+%                   herring, pike, piranha, seahorse, sole, stingray, tuna
+%            5 (4)  frog, frog, newt, toad 
+%            6 (8)  flea, gnat, honeybee, housefly, ladybird, moth, termite, wasp
+%            7 (10) clam, crab, crayfish, lobster, octopus,
+%                   scorpion, seawasp, slug, starfish, worm
+% 
+% 5. Number of Instances: 101
+% 6. Number of Attributes: 18 (animal name, 15 Boolean attributes, 2 numerics)
+% 7. Attribute Information: (name of attribute and type of value domain)
+%    1. animal name:	Unique for each instance
+%    2. hair		Boolean
+%    3. feathers	Boolean
+%    4. eggs		Boolean
+%    5. milk		Boolean
+%    6. airborne	Boolean
+%    7. aquatic		Boolean
+%    8. predator	Boolean
+%    9. toothed		Boolean
+%   10. backbone	Boolean
+%   11. breathes	Boolean
+%   12. venomous	Boolean
+%   13. fins		Boolean
+%   14. legs		Numeric (set of values: {0,2,4,5,6,8})
+%   15. tail		Boolean
+%   16. domestic	Boolean
+%   17. catsize		Boolean
+%   18. type		Numeric (integer values in range [1,7])
+% 
+% 8. Missing Attribute Values: None
+% 9. Class Distribution: Given above
+   
+@RELATION zoo
+
+@ATTRIBUTE animal {aardvark,antelope,bass,bear,boar,buffalo,calf,carp,catfish,cavy,cheetah,chicken,chub,clam,crab,crayfish,crow,deer,dogfish,dolphin,dove,duck,elephant,flamingo,flea,frog,fruitbat,giraffe,girl,gnat,goat,gorilla,gull,haddock,hamster,hare,hawk,herring,honeybee,housefly,kiwi,ladybird,lark,leopard,lion,lobster,lynx,mink,mole,mongoose,moth,newt,octopus,opossum,oryx,ostrich,parakeet,penguin,pheasant,pike,piranha,pitviper,platypus,polecat,pony,porpoise,puma,pussycat,raccoon,reindeer,rhea,scorpion,seahorse,seal,sealion,seasnake,seawasp,skimmer,skua,slowworm,slug,sole,sparrow,squirrel,starfish,stingray,swan,termite,toad,tortoise,tuatara,tuna,vampire,vole,vulture,wallaby,wasp,wolf,worm,wren}
+@ATTRIBUTE hair {false, true}
+@ATTRIBUTE feathers {false, true}
+@ATTRIBUTE eggs {false, true}
+@ATTRIBUTE milk {false, true}
+@ATTRIBUTE airborne {false, true}
+@ATTRIBUTE aquatic {false, true}
+@ATTRIBUTE predator {false, true}
+@ATTRIBUTE toothed {false, true}
+@ATTRIBUTE backbone {false, true}
+@ATTRIBUTE breathes {false, true}
+@ATTRIBUTE venomous {false, true}
+@ATTRIBUTE fins {false, true}
+@ATTRIBUTE legs INTEGER [0,9]
+@ATTRIBUTE tail {false, true}
+@ATTRIBUTE domestic {false, true}
+@ATTRIBUTE catsize {false, true}
+@ATTRIBUTE type { mammal, bird, reptile, fish, amphibian, insect, invertebrate }
+
+@DATA
+antelope,true,false,false,false,false,true,false,false,false,false,false,false,3,false,false,false
+% 1. Title: Iris Plants Database
+% 
+% 2. Sources:
+%      (a) Creator: R.A. Fisher
+%      (b) Donor: Michael Marshall (MARSHALL%PLU@io.arc.nasa.gov)
+%      (c) Date: July, 1988
+% 
+% 3. Past Usage:
+%    - Publications: too many to mention!!!  Here are a few.
+%    1. Fisher,R.A. "The use of multiple measurements in taxonomic problems"
+%       Annual Eugenics, 7, Part II, 179-188 (1936); also in "Contributions
+%       to Mathematical Statistics" (John Wiley, NY, 1950).
+%    2. Duda,R.O., & Hart,P.E. (1973) Pattern Classification and Scene Analysis.
+%       (Q327.D83) John Wiley & Sons.  ISBN 0-471-22361-1.  See page 218.
+%    3. Dasarathy, B.V. (1980) "Nosing Around the Neighborhood: A New System
+%       Structure and Classification Rule for Recognition in Partially Exposed
+%       Environments".  IEEE Transactions on Pattern Analysis and Machine
+%       Intelligence, Vol. PAMI-2, No. 1, 67-71.
+%       -- Results:
+%          -- very low misclassification rates (0% for the setosa class)
+%    4. Gates, G.W. (1972) "The Reduced Nearest Neighbor Rule".  IEEE 
+%       Transactions on Information Theory, May 1972, 431-433.
+%       -- Results:
+%          -- very low misclassification rates again
+%    5. See also: 1988 MLC Proceedings, 54-64.  Cheeseman et al's AUTOCLASS II
+%       conceptual clustering system finds 3 classes in the data.
+% 
+% 4. Relevant Information:
+%    --- This is perhaps the best known database to be found in the pattern
+%        recognition literature.  Fisher's paper is a classic in the field
+%        and is referenced frequently to this day.  (See Duda & Hart, for
+%        example.)  The data set contains 3 classes of 50 instances each,
+%        where each class refers to a type of iris plant.  One class is
+%        linearly separable from the other 2; the latter are NOT linearly
+%        separable from each other.
+%    --- Predicted attribute: class of iris plant.
+%    --- This is an exceedingly simple domain.
+% 
+% 5. Number of Instances: 150 (50 in each of three classes)
+% 
+% 6. Number of Attributes: 4 numeric, predictive attributes and the class
+% 
+% 7. Attribute Information:
+%    1. sepal length in cm
+%    2. sepal width in cm
+%    3. petal length in cm
+%    4. petal width in cm
+%    5. class: 
+%       -- Iris Setosa
+%       -- Iris Versicolour
+%       -- Iris Virginica
+% 
+% 8. Missing Attribute Values: None
+% 
+% Summary Statistics:
+%  	           Min  Max   Mean    SD   Class Correlation
+%    sepal length: 4.3  7.9   5.84  0.83    0.7826   
+%     sepal width: 2.0  4.4   3.05  0.43   -0.4194
+%    petal length: 1.0  6.9   3.76  1.76    0.9490  (high!)
+%     petal width: 0.1  2.5   1.20  0.76    0.9565  (high!)
+% 
+% 9. Class Distribution: 33.3% for each of 3 classes.
+
+@RELATION iris
+
+@ATTRIBUTE sepallength	REAL
+@ATTRIBUTE sepalwidth 	REAL
+@ATTRIBUTE petallength 	REAL
+@ATTRIBUTE petalwidth	REAL
+@ATTRIBUTE class 	{Iris-setosa,Iris-versicolor,Iris-virginica}
+
+@DATA
+22,10,10,10
+% 1. Title: Iris Plants Database
+% 
+% 2. Sources:
+%      (a) Creator: R.A. Fisher
+%      (b) Donor: Michael Marshall (MARSHALL%PLU@io.arc.nasa.gov)
+%      (c) Date: July, 1988
+% 
+% 3. Past Usage:
+%    - Publications: too many to mention!!!  Here are a few.
+%    1. Fisher,R.A. "The use of multiple measurements in taxonomic problems"
+%       Annual Eugenics, 7, Part II, 179-188 (1936); also in "Contributions
+%       to Mathematical Statistics" (John Wiley, NY, 1950).
+%    2. Duda,R.O., & Hart,P.E. (1973) Pattern Classification and Scene Analysis.
+%       (Q327.D83) John Wiley & Sons.  ISBN 0-471-22361-1.  See page 218.
+%    3. Dasarathy, B.V. (1980) "Nosing Around the Neighborhood: A New System
+%       Structure and Classification Rule for Recognition in Partially Exposed
+%       Environments".  IEEE Transactions on Pattern Analysis and Machine
+%       Intelligence, Vol. PAMI-2, No. 1, 67-71.
+%       -- Results:
+%          -- very low misclassification rates (0% for the setosa class)
+%    4. Gates, G.W. (1972) "The Reduced Nearest Neighbor Rule".  IEEE 
+%       Transactions on Information Theory, May 1972, 431-433.
+%       -- Results:
+%          -- very low misclassification rates again
+%    5. See also: 1988 MLC Proceedings, 54-64.  Cheeseman et al's AUTOCLASS II
+%       conceptual clustering system finds 3 classes in the data.
+% 
+% 4. Relevant Information:
+%    --- This is perhaps the best known database to be found in the pattern
+%        recognition literature.  Fisher's paper is a classic in the field
+%        and is referenced frequently to this day.  (See Duda & Hart, for
+%        example.)  The data set contains 3 classes of 50 instances each,
+%        where each class refers to a type of iris plant.  One class is
+%        linearly separable from the other 2; the latter are NOT linearly
+%        separable from each other.
+%    --- Predicted attribute: class of iris plant.
+%    --- This is an exceedingly simple domain.
+% 
+% 5. Number of Instances: 150 (50 in each of three classes)
+% 
+% 6. Number of Attributes: 4 numeric, predictive attributes and the class
+% 
+% 7. Attribute Information:
+%    1. sepal length in cm
+%    2. sepal width in cm
+%    3. petal length in cm
+%    4. petal width in cm
+%    5. class: 
+%       -- Iris Setosa
+%       -- Iris Versicolour
+%       -- Iris Virginica
+% 
+% 8. Missing Attribute Values: None
+% 
+% Summary Statistics:
+%  	           Min  Max   Mean    SD   Class Correlation
+%    sepal length: 4.3  7.9   5.84  0.83    0.7826   
+%     sepal width: 2.0  4.4   3.05  0.43   -0.4194
+%    petal length: 1.0  6.9   3.76  1.76    0.9490  (high!)
+%     petal width: 0.1  2.5   1.20  0.76    0.9565  (high!)
+% 
+% 9. Class Distribution: 33.3% for each of 3 classes.
+
+@RELATION iris
+
+@ATTRIBUTE sepallength	REAL
+@ATTRIBUTE sepalwidth 	REAL
+@ATTRIBUTE petallength 	REAL
+@ATTRIBUTE petalwidth	REAL
+@ATTRIBUTE class 	{Iris-setosa,Iris-versicolor,Iris-virginica}
+
+@DATA
+2,2,2,2
+% 1. Title: Database for fitting contact lenses
+% 
+% 2. Sources:
+%      (a) Cendrowska, J. "PRISM: An algorithm for inducing modular rules",
+%          International Journal of Man-Machine Studies, 1987, 27, 349-370
+%      (b) Donor: Benoit Julien (Julien@ce.cmu.edu)
+%      (c) Date: 1 August 1990
+% 
+% 3. Past Usage:
+%       1. See above.
+%       2. Witten, I. H. & MacDonald, B. A. (1988). Using concept
+%          learning for knowledge acquisition. International Journal of
+%          Man-Machine Studies, 27, (pp. 349-370).
+% 
+%  Notes:  This database is complete (all possible combinations of
+%          attribute-value pairs are represented).
+% 
+%          Each instance is complete and correct.
+% 
+%          9 rules cover the training set.
+% 
+% 4. Relevant Information Paragraph:
+%     The examples are complete and noise free.
+%     The examples highly simplified the problem. The attributes do not
+%     fully describe all the factors affecting the decision as to which type,
+%     if any, to fit.
+% 
+% 5. Number of Instances: 24
+% 
+% 6. Number of Attributes: 4 (all nominal)
+% 
+% 7. Attribute Information:
+%     -- 3 Classes
+%      1 : the patient should be fitted with hard contact lenses,
+%      2 : the patient should be fitted with soft contact lenses,
+%      1 : the patient should not be fitted with contact lenses.
+% 
+%     1. age of the patient: (1) young, (2) pre-presbyopic, (3) presbyopic
+%     2. spectacle prescription:  (1) myope, (2) hypermetrope
+%     3. astigmatic:     (1) no, (2) yes
+%     4. tear production rate:  (1) reduced, (2) normal
+% 
+% 8. Number of Missing Attribute Values:   0
+% 
+% 9. Class Distribution:
+%    1. hard contact lenses: 4
+%    2. soft contact lenses: 5
+%    3. no contact lenses: 15
+
+@relation contact-lenses
+
+@attribute age 			{young, pre-presbyopic, presbyopic}
+@attribute spectacle-prescrip	{myope, hypermetrope}
+@attribute astigmatism		{no, yes}
+@attribute tear-prod-rate	{reduced, normal}
+@attribute contact-lenses	{soft, hard, none}
+
+@data
+pre-presbyopic,hypermetrope,yes,normal
+% 1. Title: Database for fitting contact lenses
+% 
+% 2. Sources:
+%      (a) Cendrowska, J. "PRISM: An algorithm for inducing modular rules",
+%          International Journal of Man-Machine Studies, 1987, 27, 349-370
+%      (b) Donor: Benoit Julien (Julien@ce.cmu.edu)
+%      (c) Date: 1 August 1990
+% 
+% 3. Past Usage:
+%       1. See above.
+%       2. Witten, I. H. & MacDonald, B. A. (1988). Using concept
+%          learning for knowledge acquisition. International Journal of
+%          Man-Machine Studies, 27, (pp. 349-370).
+% 
+%  Notes:  This database is complete (all possible combinations of
+%          attribute-value pairs are represented).
+% 
+%          Each instance is complete and correct.
+% 
+%          9 rules cover the training set.
+% 
+% 4. Relevant Information Paragraph:
+%     The examples are complete and noise free.
+%     The examples highly simplified the problem. The attributes do not
+%     fully describe all the factors affecting the decision as to which type,
+%     if any, to fit.
+% 
+% 5. Number of Instances: 24
+% 
+% 6. Number of Attributes: 4 (all nominal)
+% 
+% 7. Attribute Information:
+%     -- 3 Classes
+%      1 : the patient should be fitted with hard contact lenses,
+%      2 : the patient should be fitted with soft contact lenses,
+%      1 : the patient should not be fitted with contact lenses.
+% 
+%     1. age of the patient: (1) young, (2) pre-presbyopic, (3) presbyopic
+%     2. spectacle prescription:  (1) myope, (2) hypermetrope
+%     3. astigmatic:     (1) no, (2) yes
+%     4. tear production rate:  (1) reduced, (2) normal
+% 
+% 8. Number of Missing Attribute Values:   0
+% 
+% 9. Class Distribution:
+%    1. hard contact lenses: 4
+%    2. soft contact lenses: 5
+%    3. no contact lenses: 15
+
+@relation contact-lenses
+
+@attribute age 			{young, pre-presbyopic, presbyopic}
+@attribute spectacle-prescrip	{myope, hypermetrope}
+@attribute astigmatism		{no, yes}
+@attribute tear-prod-rate	{reduced, normal}
+@attribute contact-lenses	{soft, hard, none}
+
+@data
+young,hypermetrope,no,normal
+% 1. Title: Database for fitting contact lenses
+% 
+% 2. Sources:
+%      (a) Cendrowska, J. "PRISM: An algorithm for inducing modular rules",
+%          International Journal of Man-Machine Studies, 1987, 27, 349-370
+%      (b) Donor: Benoit Julien (Julien@ce.cmu.edu)
+%      (c) Date: 1 August 1990
+% 
+% 3. Past Usage:
+%       1. See above.
+%       2. Witten, I. H. & MacDonald, B. A. (1988). Using concept
+%          learning for knowledge acquisition. International Journal of
+%          Man-Machine Studies, 27, (pp. 349-370).
+% 
+%  Notes:  This database is complete (all possible combinations of
+%          attribute-value pairs are represented).
+% 
+%          Each instance is complete and correct.
+% 
+%          9 rules cover the training set.
+% 
+% 4. Relevant Information Paragraph:
+%     The examples are complete and noise free.
+%     The examples highly simplified the problem. The attributes do not
+%     fully describe all the factors affecting the decision as to which type,
+%     if any, to fit.
+% 
+% 5. Number of Instances: 24
+% 
+% 6. Number of Attributes: 4 (all nominal)
+% 
+% 7. Attribute Information:
+%     -- 3 Classes
+%      1 : the patient should be fitted with hard contact lenses,
+%      2 : the patient should be fitted with soft contact lenses,
+%      1 : the patient should not be fitted with contact lenses.
+% 
+%     1. age of the patient: (1) young, (2) pre-presbyopic, (3) presbyopic
+%     2. spectacle prescription:  (1) myope, (2) hypermetrope
+%     3. astigmatic:     (1) no, (2) yes
+%     4. tear production rate:  (1) reduced, (2) normal
+% 
+% 8. Number of Missing Attribute Values:   0
+% 
+% 9. Class Distribution:
+%    1. hard contact lenses: 4
+%    2. soft contact lenses: 5
+%    3. no contact lenses: 15
+
+@relation contact-lenses
+
+@attribute age 			{young, pre-presbyopic, presbyopic}
+@attribute spectacle-prescrip	{myope, hypermetrope}
+@attribute astigmatism		{no, yes}
+@attribute tear-prod-rate	{reduced, normal}
+@attribute contact-lenses	{soft, hard, none}
+
+@data
+presbyopic,myope,no,normal
+% 1. Title: Iris Plants Database
+% 
+% 2. Sources:
+%      (a) Creator: R.A. Fisher
+%      (b) Donor: Michael Marshall (MARSHALL%PLU@io.arc.nasa.gov)
+%      (c) Date: July, 1988
+% 
+% 3. Past Usage:
+%    - Publications: too many to mention!!!  Here are a few.
+%    1. Fisher,R.A. "The use of multiple measurements in taxonomic problems"
+%       Annual Eugenics, 7, Part II, 179-188 (1936); also in "Contributions
+%       to Mathematical Statistics" (John Wiley, NY, 1950).
+%    2. Duda,R.O., & Hart,P.E. (1973) Pattern Classification and Scene Analysis.
+%       (Q327.D83) John Wiley & Sons.  ISBN 0-471-22361-1.  See page 218.
+%    3. Dasarathy, B.V. (1980) "Nosing Around the Neighborhood: A New System
+%       Structure and Classification Rule for Recognition in Partially Exposed
+%       Environments".  IEEE Transactions on Pattern Analysis and Machine
+%       Intelligence, Vol. PAMI-2, No. 1, 67-71.
+%       -- Results:
+%          -- very low misclassification rates (0% for the setosa class)
+%    4. Gates, G.W. (1972) "The Reduced Nearest Neighbor Rule".  IEEE 
+%       Transactions on Information Theory, May 1972, 431-433.
+%       -- Results:
+%          -- very low misclassification rates again
+%    5. See also: 1988 MLC Proceedings, 54-64.  Cheeseman et al's AUTOCLASS II
+%       conceptual clustering system finds 3 classes in the data.
+% 
+% 4. Relevant Information:
+%    --- This is perhaps the best known database to be found in the pattern
+%        recognition literature.  Fisher's paper is a classic in the field
+%        and is referenced frequently to this day.  (See Duda & Hart, for
+%        example.)  The data set contains 3 classes of 50 instances each,
+%        where each class refers to a type of iris plant.  One class is
+%        linearly separable from the other 2; the latter are NOT linearly
+%        separable from each other.
+%    --- Predicted attribute: class of iris plant.
+%    --- This is an exceedingly simple domain.
+% 
+% 5. Number of Instances: 150 (50 in each of three classes)
+% 
+% 6. Number of Attributes: 4 numeric, predictive attributes and the class
+% 
+% 7. Attribute Information:
+%    1. sepal length in cm
+%    2. sepal width in cm
+%    3. petal length in cm
+%    4. petal width in cm
+%    5. class: 
+%       -- Iris Setosa
+%       -- Iris Versicolour
+%       -- Iris Virginica
+% 
+% 8. Missing Attribute Values: None
+% 
+% Summary Statistics:
+%  	           Min  Max   Mean    SD   Class Correlation
+%    sepal length: 4.3  7.9   5.84  0.83    0.7826   
+%     sepal width: 2.0  4.4   3.05  0.43   -0.4194
+%    petal length: 1.0  6.9   3.76  1.76    0.9490  (high!)
+%     petal width: 0.1  2.5   1.20  0.76    0.9565  (high!)
+% 
+% 9. Class Distribution: 33.3% for each of 3 classes.
+
+@RELATION iris
+
+@ATTRIBUTE sepallength	REAL
+@ATTRIBUTE sepalwidth 	REAL
+@ATTRIBUTE petallength 	REAL
+@ATTRIBUTE petalwidth	REAL
+@ATTRIBUTE class 	{Iris-setosa,Iris-versicolor,Iris-virginica}
+
+@DATA
+5,5,5,5
+% 1. Title: Database for fitting contact lenses
+% 
+% 2. Sources:
+%      (a) Cendrowska, J. "PRISM: An algorithm for inducing modular rules",
+%          International Journal of Man-Machine Studies, 1987, 27, 349-370
+%      (b) Donor: Benoit Julien (Julien@ce.cmu.edu)
+%      (c) Date: 1 August 1990
+% 
+% 3. Past Usage:
+%       1. See above.
+%       2. Witten, I. H. & MacDonald, B. A. (1988). Using concept
+%          learning for knowledge acquisition. International Journal of
+%          Man-Machine Studies, 27, (pp. 349-370).
+% 
+%  Notes:  This database is complete (all possible combinations of
+%          attribute-value pairs are represented).
+% 
+%          Each instance is complete and correct.
+% 
+%          9 rules cover the training set.
+% 
+% 4. Relevant Information Paragraph:
+%     The examples are complete and noise free.
+%     The examples highly simplified the problem. The attributes do not
+%     fully describe all the factors affecting the decision as to which type,
+%     if any, to fit.
+% 
+% 5. Number of Instances: 24
+% 
+% 6. Number of Attributes: 4 (all nominal)
+% 
+% 7. Attribute Information:
+%     -- 3 Classes
+%      1 : the patient should be fitted with hard contact lenses,
+%      2 : the patient should be fitted with soft contact lenses,
+%      1 : the patient should not be fitted with contact lenses.
+% 
+%     1. age of the patient: (1) young, (2) pre-presbyopic, (3) presbyopic
+%     2. spectacle prescription:  (1) myope, (2) hypermetrope
+%     3. astigmatic:     (1) no, (2) yes
+%     4. tear production rate:  (1) reduced, (2) normal
+% 
+% 8. Number of Missing Attribute Values:   0
+% 
+% 9. Class Distribution:
+%    1. hard contact lenses: 4
+%    2. soft contact lenses: 5
+%    3. no contact lenses: 15
+
+@relation contact-lenses
+
+@attribute age 			{young, pre-presbyopic, presbyopic}
+@attribute spectacle-prescrip	{myope, hypermetrope}
+@attribute astigmatism		{no, yes}
+@attribute tear-prod-rate	{reduced, normal}
+@attribute contact-lenses	{soft, hard, none}
+
+@data
+pre-presbyopic,myope,yes,reduced
+% 1. Title: Iris Plants Database
+% 
+% 2. Sources:
+%      (a) Creator: R.A. Fisher
+%      (b) Donor: Michael Marshall (MARSHALL%PLU@io.arc.nasa.gov)
+%      (c) Date: July, 1988
+% 
+% 3. Past Usage:
+%    - Publications: too many to mention!!!  Here are a few.
+%    1. Fisher,R.A. "The use of multiple measurements in taxonomic problems"
+%       Annual Eugenics, 7, Part II, 179-188 (1936); also in "Contributions
+%       to Mathematical Statistics" (John Wiley, NY, 1950).
+%    2. Duda,R.O., & Hart,P.E. (1973) Pattern Classification and Scene Analysis.
+%       (Q327.D83) John Wiley & Sons.  ISBN 0-471-22361-1.  See page 218.
+%    3. Dasarathy, B.V. (1980) "Nosing Around the Neighborhood: A New System
+%       Structure and Classification Rule for Recognition in Partially Exposed
+%       Environments".  IEEE Transactions on Pattern Analysis and Machine
+%       Intelligence, Vol. PAMI-2, No. 1, 67-71.
+%       -- Results:
+%          -- very low misclassification rates (0% for the setosa class)
+%    4. Gates, G.W. (1972) "The Reduced Nearest Neighbor Rule".  IEEE 
+%       Transactions on Information Theory, May 1972, 431-433.
+%       -- Results:
+%          -- very low misclassification rates again
+%    5. See also: 1988 MLC Proceedings, 54-64.  Cheeseman et al's AUTOCLASS II
+%       conceptual clustering system finds 3 classes in the data.
+% 
+% 4. Relevant Information:
+%    --- This is perhaps the best known database to be found in the pattern
+%        recognition literature.  Fisher's paper is a classic in the field
+%        and is referenced frequently to this day.  (See Duda & Hart, for
+%        example.)  The data set contains 3 classes of 50 instances each,
+%        where each class refers to a type of iris plant.  One class is
+%        linearly separable from the other 2; the latter are NOT linearly
+%        separable from each other.
+%    --- Predicted attribute: class of iris plant.
+%    --- This is an exceedingly simple domain.
+% 
+% 5. Number of Instances: 150 (50 in each of three classes)
+% 
+% 6. Number of Attributes: 4 numeric, predictive attributes and the class
+% 
+% 7. Attribute Information:
+%    1. sepal length in cm
+%    2. sepal width in cm
+%    3. petal length in cm
+%    4. petal width in cm
+%    5. class: 
+%       -- Iris Setosa
+%       -- Iris Versicolour
+%       -- Iris Virginica
+% 
+% 8. Missing Attribute Values: None
+% 
+% Summary Statistics:
+%  	           Min  Max   Mean    SD   Class Correlation
+%    sepal length: 4.3  7.9   5.84  0.83    0.7826   
+%     sepal width: 2.0  4.4   3.05  0.43   -0.4194
+%    petal length: 1.0  6.9   3.76  1.76    0.9490  (high!)
+%     petal width: 0.1  2.5   1.20  0.76    0.9565  (high!)
+% 
+% 9. Class Distribution: 33.3% for each of 3 classes.
+
+@RELATION iris
+
+@ATTRIBUTE sepallength	REAL
+@ATTRIBUTE sepalwidth 	REAL
+@ATTRIBUTE petallength 	REAL
+@ATTRIBUTE petalwidth	REAL
+@ATTRIBUTE class 	{Iris-setosa,Iris-versicolor,Iris-virginica}
+
+@DATA
+5,6,7,8
+% 1. Title: Iris Plants Database
+% 
+% 2. Sources:
+%      (a) Creator: R.A. Fisher
+%      (b) Donor: Michael Marshall (MARSHALL%PLU@io.arc.nasa.gov)
+%      (c) Date: July, 1988
+% 
+% 3. Past Usage:
+%    - Publications: too many to mention!!!  Here are a few.
+%    1. Fisher,R.A. "The use of multiple measurements in taxonomic problems"
+%       Annual Eugenics, 7, Part II, 179-188 (1936); also in "Contributions
+%       to Mathematical Statistics" (John Wiley, NY, 1950).
+%    2. Duda,R.O., & Hart,P.E. (1973) Pattern Classification and Scene Analysis.
+%       (Q327.D83) John Wiley & Sons.  ISBN 0-471-22361-1.  See page 218.
+%    3. Dasarathy, B.V. (1980) "Nosing Around the Neighborhood: A New System
+%       Structure and Classification Rule for Recognition in Partially Exposed
+%       Environments".  IEEE Transactions on Pattern Analysis and Machine
+%       Intelligence, Vol. PAMI-2, No. 1, 67-71.
+%       -- Results:
+%          -- very low misclassification rates (0% for the setosa class)
+%    4. Gates, G.W. (1972) "The Reduced Nearest Neighbor Rule".  IEEE 
+%       Transactions on Information Theory, May 1972, 431-433.
+%       -- Results:
+%          -- very low misclassification rates again
+%    5. See also: 1988 MLC Proceedings, 54-64.  Cheeseman et al's AUTOCLASS II
+%       conceptual clustering system finds 3 classes in the data.
+% 
+% 4. Relevant Information:
+%    --- This is perhaps the best known database to be found in the pattern
+%        recognition literature.  Fisher's paper is a classic in the field
+%        and is referenced frequently to this day.  (See Duda & Hart, for
+%        example.)  The data set contains 3 classes of 50 instances each,
+%        where each class refers to a type of iris plant.  One class is
+%        linearly separable from the other 2; the latter are NOT linearly
+%        separable from each other.
+%    --- Predicted attribute: class of iris plant.
+%    --- This is an exceedingly simple domain.
+% 
+% 5. Number of Instances: 150 (50 in each of three classes)
+% 
+% 6. Number of Attributes: 4 numeric, predictive attributes and the class
+% 
+% 7. Attribute Information:
+%    1. sepal length in cm
+%    2. sepal width in cm
+%    3. petal length in cm
+%    4. petal width in cm
+%    5. class: 
+%       -- Iris Setosa
+%       -- Iris Versicolour
+%       -- Iris Virginica
+% 
+% 8. Missing Attribute Values: None
+% 
+% Summary Statistics:
+%  	           Min  Max   Mean    SD   Class Correlation
+%    sepal length: 4.3  7.9   5.84  0.83    0.7826   
+%     sepal width: 2.0  4.4   3.05  0.43   -0.4194
+%    petal length: 1.0  6.9   3.76  1.76    0.9490  (high!)
+%     petal width: 0.1  2.5   1.20  0.76    0.9565  (high!)
+% 
+% 9. Class Distribution: 33.3% for each of 3 classes.
+
+@RELATION iris
+
+@ATTRIBUTE sepallength	REAL
+@ATTRIBUTE sepalwidth 	REAL
+@ATTRIBUTE petallength 	REAL
+@ATTRIBUTE petalwidth	REAL
+@ATTRIBUTE class 	{Iris-setosa,Iris-versicolor,Iris-virginica}
+
+@DATA
+0,0,0,0
+% 1. Title: Iris Plants Database
+% 
+% 2. Sources:
+%      (a) Creator: R.A. Fisher
+%      (b) Donor: Michael Marshall (MARSHALL%PLU@io.arc.nasa.gov)
+%      (c) Date: July, 1988
+% 
+% 3. Past Usage:
+%    - Publications: too many to mention!!!  Here are a few.
+%    1. Fisher,R.A. "The use of multiple measurements in taxonomic problems"
+%       Annual Eugenics, 7, Part II, 179-188 (1936); also in "Contributions
+%       to Mathematical Statistics" (John Wiley, NY, 1950).
+%    2. Duda,R.O., & Hart,P.E. (1973) Pattern Classification and Scene Analysis.
+%       (Q327.D83) John Wiley & Sons.  ISBN 0-471-22361-1.  See page 218.
+%    3. Dasarathy, B.V. (1980) "Nosing Around the Neighborhood: A New System
+%       Structure and Classification Rule for Recognition in Partially Exposed
+%       Environments".  IEEE Transactions on Pattern Analysis and Machine
+%       Intelligence, Vol. PAMI-2, No. 1, 67-71.
+%       -- Results:
+%          -- very low misclassification rates (0% for the setosa class)
+%    4. Gates, G.W. (1972) "The Reduced Nearest Neighbor Rule".  IEEE 
+%       Transactions on Information Theory, May 1972, 431-433.
+%       -- Results:
+%          -- very low misclassification rates again
+%    5. See also: 1988 MLC Proceedings, 54-64.  Cheeseman et al's AUTOCLASS II
+%       conceptual clustering system finds 3 classes in the data.
+% 
+% 4. Relevant Information:
+%    --- This is perhaps the best known database to be found in the pattern
+%        recognition literature.  Fisher's paper is a classic in the field
+%        and is referenced frequently to this day.  (See Duda & Hart, for
+%        example.)  The data set contains 3 classes of 50 instances each,
+%        where each class refers to a type of iris plant.  One class is
+%        linearly separable from the other 2; the latter are NOT linearly
+%        separable from each other.
+%    --- Predicted attribute: class of iris plant.
+%    --- This is an exceedingly simple domain.
+% 
+% 5. Number of Instances: 150 (50 in each of three classes)
+% 
+% 6. Number of Attributes: 4 numeric, predictive attributes and the class
+% 
+% 7. Attribute Information:
+%    1. sepal length in cm
+%    2. sepal width in cm
+%    3. petal length in cm
+%    4. petal width in cm
+%    5. class: 
+%       -- Iris Setosa
+%       -- Iris Versicolour
+%       -- Iris Virginica
+% 
+% 8. Missing Attribute Values: None
+% 
+% Summary Statistics:
+%  	           Min  Max   Mean    SD   Class Correlation
+%    sepal length: 4.3  7.9   5.84  0.83    0.7826   
+%     sepal width: 2.0  4.4   3.05  0.43   -0.4194
+%    petal length: 1.0  6.9   3.76  1.76    0.9490  (high!)
+%     petal width: 0.1  2.5   1.20  0.76    0.9565  (high!)
+% 
+% 9. Class Distribution: 33.3% for each of 3 classes.
+
+@RELATION iris
+
+@ATTRIBUTE sepallength	REAL
+@ATTRIBUTE sepalwidth 	REAL
+@ATTRIBUTE petallength 	REAL
+@ATTRIBUTE petalwidth	REAL
+@ATTRIBUTE class 	{Iris-setosa,Iris-versicolor,Iris-virginica}
+
+@DATA
+0,0,0,0
+% 1. Title: Iris Plants Database
+% 
+% 2. Sources:
+%      (a) Creator: R.A. Fisher
+%      (b) Donor: Michael Marshall (MARSHALL%PLU@io.arc.nasa.gov)
+%      (c) Date: July, 1988
+% 
+% 3. Past Usage:
+%    - Publications: too many to mention!!!  Here are a few.
+%    1. Fisher,R.A. "The use of multiple measurements in taxonomic problems"
+%       Annual Eugenics, 7, Part II, 179-188 (1936); also in "Contributions
+%       to Mathematical Statistics" (John Wiley, NY, 1950).
+%    2. Duda,R.O., & Hart,P.E. (1973) Pattern Classification and Scene Analysis.
+%       (Q327.D83) John Wiley & Sons.  ISBN 0-471-22361-1.  See page 218.
+%    3. Dasarathy, B.V. (1980) "Nosing Around the Neighborhood: A New System
+%       Structure and Classification Rule for Recognition in Partially Exposed
+%       Environments".  IEEE Transactions on Pattern Analysis and Machine
+%       Intelligence, Vol. PAMI-2, No. 1, 67-71.
+%       -- Results:
+%          -- very low misclassification rates (0% for the setosa class)
+%    4. Gates, G.W. (1972) "The Reduced Nearest Neighbor Rule".  IEEE 
+%       Transactions on Information Theory, May 1972, 431-433.
+%       -- Results:
+%          -- very low misclassification rates again
+%    5. See also: 1988 MLC Proceedings, 54-64.  Cheeseman et al's AUTOCLASS II
+%       conceptual clustering system finds 3 classes in the data.
+% 
+% 4. Relevant Information:
+%    --- This is perhaps the best known database to be found in the pattern
+%        recognition literature.  Fisher's paper is a classic in the field
+%        and is referenced frequently to this day.  (See Duda & Hart, for
+%        example.)  The data set contains 3 classes of 50 instances each,
+%        where each class refers to a type of iris plant.  One class is
+%        linearly separable from the other 2; the latter are NOT linearly
+%        separable from each other.
+%    --- Predicted attribute: class of iris plant.
+%    --- This is an exceedingly simple domain.
+% 
+% 5. Number of Instances: 150 (50 in each of three classes)
+% 
+% 6. Number of Attributes: 4 numeric, predictive attributes and the class
+% 
+% 7. Attribute Information:
+%    1. sepal length in cm
+%    2. sepal width in cm
+%    3. petal length in cm
+%    4. petal width in cm
+%    5. class: 
+%       -- Iris Setosa
+%       -- Iris Versicolour
+%       -- Iris Virginica
+% 
+% 8. Missing Attribute Values: None
+% 
+% Summary Statistics:
+%  	           Min  Max   Mean    SD   Class Correlation
+%    sepal length: 4.3  7.9   5.84  0.83    0.7826   
+%     sepal width: 2.0  4.4   3.05  0.43   -0.4194
+%    petal length: 1.0  6.9   3.76  1.76    0.9490  (high!)
+%     petal width: 0.1  2.5   1.20  0.76    0.9565  (high!)
+% 
+% 9. Class Distribution: 33.3% for each of 3 classes.
+
+@RELATION iris
+
+@ATTRIBUTE sepallength	REAL
+@ATTRIBUTE sepalwidth 	REAL
+@ATTRIBUTE petallength 	REAL
+@ATTRIBUTE petalwidth	REAL
+@ATTRIBUTE class 	{Iris-setosa,Iris-versicolor,Iris-virginica}
+
+@DATA
+0,0,0,0
+% 1. Title: Iris Plants Database
+% 
+% 2. Sources:
+%      (a) Creator: R.A. Fisher
+%      (b) Donor: Michael Marshall (MARSHALL%PLU@io.arc.nasa.gov)
+%      (c) Date: July, 1988
+% 
+% 3. Past Usage:
+%    - Publications: too many to mention!!!  Here are a few.
+%    1. Fisher,R.A. "The use of multiple measurements in taxonomic problems"
+%       Annual Eugenics, 7, Part II, 179-188 (1936); also in "Contributions
+%       to Mathematical Statistics" (John Wiley, NY, 1950).
+%    2. Duda,R.O., & Hart,P.E. (1973) Pattern Classification and Scene Analysis.
+%       (Q327.D83) John Wiley & Sons.  ISBN 0-471-22361-1.  See page 218.
+%    3. Dasarathy, B.V. (1980) "Nosing Around the Neighborhood: A New System
+%       Structure and Classification Rule for Recognition in Partially Exposed
+%       Environments".  IEEE Transactions on Pattern Analysis and Machine
+%       Intelligence, Vol. PAMI-2, No. 1, 67-71.
+%       -- Results:
+%          -- very low misclassification rates (0% for the setosa class)
+%    4. Gates, G.W. (1972) "The Reduced Nearest Neighbor Rule".  IEEE 
+%       Transactions on Information Theory, May 1972, 431-433.
+%       -- Results:
+%          -- very low misclassification rates again
+%    5. See also: 1988 MLC Proceedings, 54-64.  Cheeseman et al's AUTOCLASS II
+%       conceptual clustering system finds 3 classes in the data.
+% 
+% 4. Relevant Information:
+%    --- This is perhaps the best known database to be found in the pattern
+%        recognition literature.  Fisher's paper is a classic in the field
+%        and is referenced frequently to this day.  (See Duda & Hart, for
+%        example.)  The data set contains 3 classes of 50 instances each,
+%        where each class refers to a type of iris plant.  One class is
+%        linearly separable from the other 2; the latter are NOT linearly
+%        separable from each other.
+%    --- Predicted attribute: class of iris plant.
+%    --- This is an exceedingly simple domain.
+% 
+% 5. Number of Instances: 150 (50 in each of three classes)
+% 
+% 6. Number of Attributes: 4 numeric, predictive attributes and the class
+% 
+% 7. Attribute Information:
+%    1. sepal length in cm
+%    2. sepal width in cm
+%    3. petal length in cm
+%    4. petal width in cm
+%    5. class: 
+%       -- Iris Setosa
+%       -- Iris Versicolour
+%       -- Iris Virginica
+% 
+% 8. Missing Attribute Values: None
+% 
+% Summary Statistics:
+%  	           Min  Max   Mean    SD   Class Correlation
+%    sepal length: 4.3  7.9   5.84  0.83    0.7826   
+%     sepal width: 2.0  4.4   3.05  0.43   -0.4194
+%    petal length: 1.0  6.9   3.76  1.76    0.9490  (high!)
+%     petal width: 0.1  2.5   1.20  0.76    0.9565  (high!)
+% 
+% 9. Class Distribution: 33.3% for each of 3 classes.
+
+@RELATION iris
+
+@ATTRIBUTE sepallength	REAL
+@ATTRIBUTE sepalwidth 	REAL
+@ATTRIBUTE petallength 	REAL
+@ATTRIBUTE petalwidth	REAL
+@ATTRIBUTE class 	{Iris-setosa,Iris-versicolor,Iris-virginica}
+
+@DATA
+0,0,0,0
+% 1. Title: Iris Plants Database
+% 
+% 2. Sources:
+%      (a) Creator: R.A. Fisher
+%      (b) Donor: Michael Marshall (MARSHALL%PLU@io.arc.nasa.gov)
+%      (c) Date: July, 1988
+% 
+% 3. Past Usage:
+%    - Publications: too many to mention!!!  Here are a few.
+%    1. Fisher,R.A. "The use of multiple measurements in taxonomic problems"
+%       Annual Eugenics, 7, Part II, 179-188 (1936); also in "Contributions
+%       to Mathematical Statistics" (John Wiley, NY, 1950).
+%    2. Duda,R.O., & Hart,P.E. (1973) Pattern Classification and Scene Analysis.
+%       (Q327.D83) John Wiley & Sons.  ISBN 0-471-22361-1.  See page 218.
+%    3. Dasarathy, B.V. (1980) "Nosing Around the Neighborhood: A New System
+%       Structure and Classification Rule for Recognition in Partially Exposed
+%       Environments".  IEEE Transactions on Pattern Analysis and Machine
+%       Intelligence, Vol. PAMI-2, No. 1, 67-71.
+%       -- Results:
+%          -- very low misclassification rates (0% for the setosa class)
+%    4. Gates, G.W. (1972) "The Reduced Nearest Neighbor Rule".  IEEE 
+%       Transactions on Information Theory, May 1972, 431-433.
+%       -- Results:
+%          -- very low misclassification rates again
+%    5. See also: 1988 MLC Proceedings, 54-64.  Cheeseman et al's AUTOCLASS II
+%       conceptual clustering system finds 3 classes in the data.
+% 
+% 4. Relevant Information:
+%    --- This is perhaps the best known database to be found in the pattern
+%        recognition literature.  Fisher's paper is a classic in the field
+%        and is referenced frequently to this day.  (See Duda & Hart, for
+%        example.)  The data set contains 3 classes of 50 instances each,
+%        where each class refers to a type of iris plant.  One class is
+%        linearly separable from the other 2; the latter are NOT linearly
+%        separable from each other.
+%    --- Predicted attribute: class of iris plant.
+%    --- This is an exceedingly simple domain.
+% 
+% 5. Number of Instances: 150 (50 in each of three classes)
+% 
+% 6. Number of Attributes: 4 numeric, predictive attributes and the class
+% 
+% 7. Attribute Information:
+%    1. sepal length in cm
+%    2. sepal width in cm
+%    3. petal length in cm
+%    4. petal width in cm
+%    5. class: 
+%       -- Iris Setosa
+%       -- Iris Versicolour
+%       -- Iris Virginica
+% 
+% 8. Missing Attribute Values: None
+% 
+% Summary Statistics:
+%  	           Min  Max   Mean    SD   Class Correlation
+%    sepal length: 4.3  7.9   5.84  0.83    0.7826   
+%     sepal width: 2.0  4.4   3.05  0.43   -0.4194
+%    petal length: 1.0  6.9   3.76  1.76    0.9490  (high!)
+%     petal width: 0.1  2.5   1.20  0.76    0.9565  (high!)
+% 
+% 9. Class Distribution: 33.3% for each of 3 classes.
+
+@RELATION iris
+
+@ATTRIBUTE sepallength	REAL
+@ATTRIBUTE sepalwidth 	REAL
+@ATTRIBUTE petallength 	REAL
+@ATTRIBUTE petalwidth	REAL
+@ATTRIBUTE class 	{Iris-setosa,Iris-versicolor,Iris-virginica}
+
+@DATA
+0,0,0,0
+% 1. Title: Iris Plants Database
+% 
+% 2. Sources:
+%      (a) Creator: R.A. Fisher
+%      (b) Donor: Michael Marshall (MARSHALL%PLU@io.arc.nasa.gov)
+%      (c) Date: July, 1988
+% 
+% 3. Past Usage:
+%    - Publications: too many to mention!!!  Here are a few.
+%    1. Fisher,R.A. "The use of multiple measurements in taxonomic problems"
+%       Annual Eugenics, 7, Part II, 179-188 (1936); also in "Contributions
+%       to Mathematical Statistics" (John Wiley, NY, 1950).
+%    2. Duda,R.O., & Hart,P.E. (1973) Pattern Classification and Scene Analysis.
+%       (Q327.D83) John Wiley & Sons.  ISBN 0-471-22361-1.  See page 218.
+%    3. Dasarathy, B.V. (1980) "Nosing Around the Neighborhood: A New System
+%       Structure and Classification Rule for Recognition in Partially Exposed
+%       Environments".  IEEE Transactions on Pattern Analysis and Machine
+%       Intelligence, Vol. PAMI-2, No. 1, 67-71.
+%       -- Results:
+%          -- very low misclassification rates (0% for the setosa class)
+%    4. Gates, G.W. (1972) "The Reduced Nearest Neighbor Rule".  IEEE 
+%       Transactions on Information Theory, May 1972, 431-433.
+%       -- Results:
+%          -- very low misclassification rates again
+%    5. See also: 1988 MLC Proceedings, 54-64.  Cheeseman et al's AUTOCLASS II
+%       conceptual clustering system finds 3 classes in the data.
+% 
+% 4. Relevant Information:
+%    --- This is perhaps the best known database to be found in the pattern
+%        recognition literature.  Fisher's paper is a classic in the field
+%        and is referenced frequently to this day.  (See Duda & Hart, for
+%        example.)  The data set contains 3 classes of 50 instances each,
+%        where each class refers to a type of iris plant.  One class is
+%        linearly separable from the other 2; the latter are NOT linearly
+%        separable from each other.
+%    --- Predicted attribute: class of iris plant.
+%    --- This is an exceedingly simple domain.
+% 
+% 5. Number of Instances: 150 (50 in each of three classes)
+% 
+% 6. Number of Attributes: 4 numeric, predictive attributes and the class
+% 
+% 7. Attribute Information:
+%    1. sepal length in cm
+%    2. sepal width in cm
+%    3. petal length in cm
+%    4. petal width in cm
+%    5. class: 
+%       -- Iris Setosa
+%       -- Iris Versicolour
+%       -- Iris Virginica
+% 
+% 8. Missing Attribute Values: None
+% 
+% Summary Statistics:
+%  	           Min  Max   Mean    SD   Class Correlation
+%    sepal length: 4.3  7.9   5.84  0.83    0.7826   
+%     sepal width: 2.0  4.4   3.05  0.43   -0.4194
+%    petal length: 1.0  6.9   3.76  1.76    0.9490  (high!)
+%     petal width: 0.1  2.5   1.20  0.76    0.9565  (high!)
+% 
+% 9. Class Distribution: 33.3% for each of 3 classes.
+
+@RELATION iris
+
+@ATTRIBUTE sepallength	REAL
+@ATTRIBUTE sepalwidth 	REAL
+@ATTRIBUTE petallength 	REAL
+@ATTRIBUTE petalwidth	REAL
+@ATTRIBUTE class 	{Iris-setosa,Iris-versicolor,Iris-virginica}
+
+@DATA
+0,0,0,0
+% 1. Title: Iris Plants Database
+% 
+% 2. Sources:
+%      (a) Creator: R.A. Fisher
+%      (b) Donor: Michael Marshall (MARSHALL%PLU@io.arc.nasa.gov)
+%      (c) Date: July, 1988
+% 
+% 3. Past Usage:
+%    - Publications: too many to mention!!!  Here are a few.
+%    1. Fisher,R.A. "The use of multiple measurements in taxonomic problems"
+%       Annual Eugenics, 7, Part II, 179-188 (1936); also in "Contributions
+%       to Mathematical Statistics" (John Wiley, NY, 1950).
+%    2. Duda,R.O., & Hart,P.E. (1973) Pattern Classification and Scene Analysis.
+%       (Q327.D83) John Wiley & Sons.  ISBN 0-471-22361-1.  See page 218.
+%    3. Dasarathy, B.V. (1980) "Nosing Around the Neighborhood: A New System
+%       Structure and Classification Rule for Recognition in Partially Exposed
+%       Environments".  IEEE Transactions on Pattern Analysis and Machine
+%       Intelligence, Vol. PAMI-2, No. 1, 67-71.
+%       -- Results:
+%          -- very low misclassification rates (0% for the setosa class)
+%    4. Gates, G.W. (1972) "The Reduced Nearest Neighbor Rule".  IEEE 
+%       Transactions on Information Theory, May 1972, 431-433.
+%       -- Results:
+%          -- very low misclassification rates again
+%    5. See also: 1988 MLC Proceedings, 54-64.  Cheeseman et al's AUTOCLASS II
+%       conceptual clustering system finds 3 classes in the data.
+% 
+% 4. Relevant Information:
+%    --- This is perhaps the best known database to be found in the pattern
+%        recognition literature.  Fisher's paper is a classic in the field
+%        and is referenced frequently to this day.  (See Duda & Hart, for
+%        example.)  The data set contains 3 classes of 50 instances each,
+%        where each class refers to a type of iris plant.  One class is
+%        linearly separable from the other 2; the latter are NOT linearly
+%        separable from each other.
+%    --- Predicted attribute: class of iris plant.
+%    --- This is an exceedingly simple domain.
+% 
+% 5. Number of Instances: 150 (50 in each of three classes)
+% 
+% 6. Number of Attributes: 4 numeric, predictive attributes and the class
+% 
+% 7. Attribute Information:
+%    1. sepal length in cm
+%    2. sepal width in cm
+%    3. petal length in cm
+%    4. petal width in cm
+%    5. class: 
+%       -- Iris Setosa
+%       -- Iris Versicolour
+%       -- Iris Virginica
+% 
+% 8. Missing Attribute Values: None
+% 
+% Summary Statistics:
+%  	           Min  Max   Mean    SD   Class Correlation
+%    sepal length: 4.3  7.9   5.84  0.83    0.7826   
+%     sepal width: 2.0  4.4   3.05  0.43   -0.4194
+%    petal length: 1.0  6.9   3.76  1.76    0.9490  (high!)
+%     petal width: 0.1  2.5   1.20  0.76    0.9565  (high!)
+% 
+% 9. Class Distribution: 33.3% for each of 3 classes.
+
+@RELATION iris
+
+@ATTRIBUTE sepallength	REAL
+@ATTRIBUTE sepalwidth 	REAL
+@ATTRIBUTE petallength 	REAL
+@ATTRIBUTE petalwidth	REAL
+@ATTRIBUTE class 	{Iris-setosa,Iris-versicolor,Iris-virginica}
+
+@DATA
+0,0,0,0
+% Citation Request:
+%    This breast cancer domain was obtained from the University Medical Centre,
+%    Institute of Oncology, Ljubljana, Yugoslavia.  Thanks go to M. Zwitter and 
+%    M. Soklic for providing the data.  Please include this citation if you plan
+%    to use this database.
+% 
+% 1. Title: Breast cancer data (Michalski has used this)
+% 
+% 2. Sources: 
+%    -- Matjaz Zwitter & Milan Soklic (physicians)
+%       Institute of Oncology 
+%       University Medical Center
+%       Ljubljana, Yugoslavia
+%    -- Donors: Ming Tan and Jeff Schlimmer (Jeffrey.Schlimmer@a.gp.cs.cmu.edu)
+%    -- Date: 11 July 1988
+% 
+% 3. Past Usage: (Several: here are some)
+%      -- Michalski,R.S., Mozetic,I., Hong,J., & Lavrac,N. (1986). The 
+%         Multi-Purpose Incremental Learning System AQ15 and its Testing 
+%         Application to Three Medical Domains.  In Proceedings of the 
+%         Fifth National Conference on Artificial Intelligence, 1041-1045,
+%         Philadelphia, PA: Morgan Kaufmann.
+%         -- accuracy range: 66%-72%
+%      -- Clark,P. & Niblett,T. (1987). Induction in Noisy Domains.  In 
+%         Progress in Machine Learning (from the Proceedings of the 2nd
+%         European Working Session on Learning), 11-30, Bled, 
+%         Yugoslavia: Sigma Press.
+%         -- 8 test results given: 65%-72% accuracy range
+%      -- Tan, M., & Eshelman, L. (1988). Using weighted networks to 
+%         represent classification knowledge in noisy domains.  Proceedings 
+%         of the Fifth International Conference on Machine Learning, 121-134,
+%         Ann Arbor, MI.
+%         -- 4 systems tested: accuracy range was 68%-73.5%
+%     -- Cestnik,G., Konenenko,I, & Bratko,I. (1987). Assistant-86: A
+%        Knowledge-Elicitation Tool for Sophisticated Users.  In I.Bratko
+%        & N.Lavrac (Eds.) Progress in Machine Learning, 31-45, Sigma Press.
+%        -- Assistant-86: 78% accuracy
+% 
+% 4. Relevant Information:
+%      This is one of three domains provided by the Oncology Institute
+%      that has repeatedly appeared in the machine learning literature.
+%      (See also lymphography and primary-tumor.)
+% 
+%      This data set includes 201 instances of one class and 85 instances of
+%      another class.  The instances are described by 9 attributes, some of
+%      which are linear and some are nominal.
+% 
+% 5. Number of Instances: 286
+% 
+% 6. Number of Attributes: 9 + the class attribute
+% 
+% 7. Attribute Information:
+%    1. Class: no-recurrence-events, recurrence-events
+%    2. age: 10-19, 20-29, 30-39, 40-49, 50-59, 60-69, 70-79, 80-89, 90-99.
+%    3. menopause: lt40, ge40, premeno.
+%    4. tumor-size: 0-4, 5-9, 10-14, 15-19, 20-24, 25-29, 30-34, 35-39, 40-44,
+%                   45-49, 50-54, 55-59.
+%    5. inv-nodes: 0-2, 3-5, 6-8, 9-11, 12-14, 15-17, 18-20, 21-23, 24-26,
+%                  27-29, 30-32, 33-35, 36-39.
+%    6. node-caps: yes, no.
+%    7. deg-malig: 1, 2, 3.
+%    8. breast: left, right.
+%    9. breast-quad: left-up, left-low, right-up, right-low, central.
+%   10. irradiat: yes, no.
+% 
+% 8. Missing Attribute Values: (denoted by "?")
+%    Attribute #:  Number of instances with missing values:
+%    6.             8
+%    9.             1.
+% 
+% 9. Class Distribution:
+%     1. no-recurrence-events: 201 instances
+%     2. recurrence-events: 85 instances
+%
+% Num Instances:     286
+% Num Attributes:    10
+% Num Continuous:    0 (Int 0 / Real 0)
+% Num Discrete:      10
+% Missing values:    9 /  0.3%
+%
+%     name                      type enum ints real     missing    distinct  (1)
+%   1 'age'                     Enum 100%   0%   0%     0 /  0%     6 /  2%   0% 
+%   2 'menopause'               Enum 100%   0%   0%     0 /  0%     3 /  1%   0% 
+%   3 'tumor-size'              Enum 100%   0%   0%     0 /  0%    11 /  4%   0% 
+%   4 'inv-nodes'               Enum 100%   0%   0%     0 /  0%     7 /  2%   0% 
+%   5 'node-caps'               Enum  97%   0%   0%     8 /  3%     2 /  1%   0% 
+%   6 'deg-malig'               Enum 100%   0%   0%     0 /  0%     3 /  1%   0% 
+%   7 'breast'                  Enum 100%   0%   0%     0 /  0%     2 /  1%   0% 
+%   8 'breast-quad'             Enum 100%   0%   0%     1 /  0%     5 /  2%   0% 
+%   9 'irradiat'                Enum 100%   0%   0%     0 /  0%     2 /  1%   0% 
+%  10 'Class'                   Enum 100%   0%   0%     0 /  0%     2 /  1%   0% 
+%
+%
+@relation breast-cancer
+@attribute age {'10-19','20-29','30-39','40-49','50-59','60-69','70-79','80-89','90-99'}
+@attribute menopause {'lt40','ge40','premeno'}
+@attribute tumor-size {'0-4','5-9','10-14','15-19','20-24','25-29','30-34','35-39','40-44','45-49','50-54','55-59'}
+@attribute inv-nodes {'0-2','3-5','6-8','9-11','12-14','15-17','18-20','21-23','24-26','27-29','30-32','33-35','36-39'}
+@attribute node-caps {'yes','no'}
+@attribute deg-malig {'1','2','3'}
+@attribute breast {'left','right'}
+@attribute breast-quad {'left_up','left_low','right_up','right_low','central'}
+@attribute 'irradiat' {'yes','no'}
+@attribute 'Class' {'no-recurrence-events','recurrence-events'}
+@data
+60-69,ge40,25-29,18-20,no,1,right,left_low,no
